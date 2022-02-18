@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tennis Players</title>
+    <link rel="stylesheet" href="Tennis Players.css">
+</head>
+<body>
+    <header>Tennis Players in the Tour</header><br><br>
+    <nav>
+        <ul>
+            <li><a href="Home.html" target="_parent">Home</a></li>
+            <li><a href="Men's Singles.html" target="_parent">Men's Singles</a></li>
+            <li><a href="Women's Singles.html" target="_parent">Women's Singles</a></li>
+            <li><a href="Men's Doubles.html" target="_parent">Men's Doubles</a></li>
+            <li><a href="Women's Doubles.html" target="_parent">Women's Doubles</a></li>
+            <li><a href="Mixed Doubles.html" target="_parent">Mixed Doubles</a></li>
+            <li id="login"><a href="Login.html">Login</a></li>
+            <li id="register"><a href="Register.html">Register</a></li>
+        </ul>
+    </nav><br><br><br>
+
+    <h1>Register Confirm</h1><br>
+
+    <table id="customers">
+        <span id="user-List"></span>
+        <tr></tr>
+
+        <tr>
+            <td colspan="2">
+                <div class="span">
+                    <button class="button" type="submit" onclick="savedata()">Save</button>&nbsp;&nbsp;||&nbsp;
+                    <button class="button" type="cancel" onclick="removedata()">Cancel</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        const savedata =() => {
+            alert("Save Data Successfully!!");
+            location.href="Home.html";
+        }
+
+        const removedata =() => {
+            localStorage.removeItem('username');
+            localStorage.removeItem('email');
+            localStorage.removeItem('password');
+            localStorage.removeItem('firstname');
+            localStorage.removeItem('lastname');
+            localStorage.clear();
+            location.href="Register.html";
+        }
+
+        document.getElementById('user-List').innerHTML;
+
+        let getuserData = JSON.parse(localStorage.getItem('userList'));
+        let getList = '';
+
+        for (i=0; i<getuserData.length; i++) {
+            getList += 
+
+            `<table id="customers">
+                <tr>
+                    <td>Username</td>
+                    <td>`+getuserData[i].Username+`</td>
+                </tr>
+
+                <tr>
+                    <td>Email</td>
+                    <td>`+getuserData[i].Email+`</td>
+                </tr>
+
+                <tr>
+                    <td>Password</td>
+                    <td>`+getuserData[i].Password+`</td>
+                </tr>
+
+                <tr>
+                    <td>First Name</td>
+                    <td>`+getuserData[i].First_Name+`</td>
+                </tr>
+
+                <tr>
+                    <td>Last Name</td>
+                    <td>`+getuserData[i].Last_Name+`</td>
+                </tr>
+            </table>`
+        }
+
+        document.getElementById('user-List').innerHTML = getList;
+
+        // document.getElementById("data").innerHTML = localStorage.getItem("txtValue");
+        // document.getElementById("data1").innerHTML = localStorage.getItem("txtValue1");
+        // document.getElementById("data2").innerHTML = localStorage.getItem("txtValue2");
+        // document.getElementById("data3").innerHTML = localStorage.getItem("txtValue3");
+        // document.getElementById("data4").innerHTML = localStorage.getItem("txtValue4");
+
+    </script><br><br><br><br>
+
+    <footer>&copy; 2017&nbsp;&nbsp;@Photo Image</footer>
+</body>
+</html>
